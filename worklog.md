@@ -55,3 +55,21 @@ Stage Summary:
 - Repo live at https://github.com/sigitdwiarso/marketpath with MIT license
 - NOTE: user should revoke the PAT now that push is done
 - Pending ideas: README, package.json description, GitHub topics, Vercel deploy
+
+---
+Task ID: ghpages-1
+Agent: main
+Task: Set up GitHub Pages deployment for MarketPath
+
+Work Log:
+- Verified static-export compatibility (no API usage, no next/image, no server functions)
+- next.config.ts: conditional EXPORT_MODE -> output:export, basePath:/marketpath, trailingSlash, unoptimized images
+- Removed placeholder src/app/api (blocks static export)
+- Added build:static script + repo description in package.json
+- Created .github/workflows/deploy.yml (Bun install, build:static, .nojekyll, deploy-pages)
+- Tested export locally: build OK, /marketpath/ served 200, chunk assets 200
+- Committed as c3a3847 "Add GitHub Pages static export deployment"
+
+Stage Summary:
+- Deployment ready; requires push + user enabling Pages (Source: GitHub Actions)
+- Live URL will be https://sigitdwiarso.github.io/marketpath/
