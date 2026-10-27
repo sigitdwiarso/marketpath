@@ -50,7 +50,7 @@ const LEARNING_SOURCES: { name: string; url: string; desc: string }[] = [
 export function Footer() {
   return (
     <footer className="mt-auto border-t border-border bg-card/50">
-      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+      <div className="mx-auto max-w-6xl 2xl:max-w-7xl px-4 py-10 sm:px-6">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <p className="flex items-center gap-2 font-semibold">

@@ -20,9 +20,9 @@ export default function Home() {
         <Hero />
         <div className="bg-market-grid">
           <Fundamentals />
-          <div className="mx-auto h-px max-w-6xl bg-border" />
+          <div className="mx-auto h-px max-w-6xl 2xl:max-w-7xl bg-border" />
           <StockEssentials />
-          <div className="mx-auto h-px max-w-6xl bg-border" />
+          <div className="mx-auto h-px max-w-6xl 2xl:max-w-7xl bg-border" />
           <CryptoEssentials />
         </div>
         <div className="bg-card/40">
@@ -30,9 +30,9 @@ export default function Home() {
         </div>
         <div className="bg-market-grid">
           <Simulator />
-          <div className="mx-auto h-px max-w-6xl bg-border" />
+          <div className="mx-auto h-px max-w-6xl 2xl:max-w-7xl bg-border" />
           <RiskManagement />
-          <div className="mx-auto h-px max-w-6xl bg-border" />
+          <div className="mx-auto h-px max-w-6xl 2xl:max-w-7xl bg-border" />
           <Practice />
         </div>
         <GlossaryFaq />

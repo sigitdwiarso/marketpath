@@ -74,7 +74,7 @@ export function SectionShell({
 
   return (
     <section id={id} className="scroll-mt-20 py-14 sm:py-20" aria-labelledby={`${id}-heading`}>
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="mx-auto max-w-6xl 2xl:max-w-7xl px-4 sm:px-6">
         <div className="flex flex-wrap items-center gap-3">
           <Badge variant="outline" className="tnum border-volt/50 text-volt">
             Lesson {number} of 7
@@ -150,8 +150,8 @@ export function InfoCard({
 
 export function SimBadge({ children }: { children?: React.ReactNode }) {
   return (
-    <Badge variant="outline" className="gap-1 border-gold/50 text-xs font-medium text-gold">
-      <span className="animate-pulse-dot h-1.5 w-1.5 rounded-full bg-gold" aria-hidden />
+    <Badge variant="outline" className="gap-1 whitespace-normal border-gold/50 text-left text-xs font-medium text-gold">
+      <span className="animate-pulse-dot mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden />
       {children ?? "Simulated data — for education only"}
     </Badge>
   );

@@ -136,7 +136,7 @@ export function CryptoEssentials() {
       {/* Coins vs tokens */}
       <div>
         <h3 className="font-heading text-xl font-semibold">Coins vs. tokens</h3>
-        <div className="bg-card mt-4 overflow-x-auto rounded-xl border border-border">
+        <div className="bg-card custom-scrollbar mt-4 overflow-x-auto rounded-xl border border-border">
           <table className="w-full min-w-[560px] text-sm">
             <thead>
               <tr className="border-b border-border text-left">

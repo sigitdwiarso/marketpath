@@ -47,7 +47,7 @@ export function Nav() {
         scrolled ? "border-border bg-background/85 backdrop-blur-md" : "border-transparent bg-transparent"
       )}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center gap-4 px-4 sm:px-6">
+      <div className="mx-auto flex h-16 max-w-6xl 2xl:max-w-7xl items-center gap-4 px-4 sm:px-6">
         <a href="#top" className="flex items-center gap-2 font-semibold" aria-label="MarketPath home">
           <span className="bg-volt flex h-8 w-8 items-center justify-center rounded-lg text-white">
             <TrendingUp className="h-4.5 w-4.5" aria-hidden />
@@ -57,27 +57,27 @@ export function Nav() {
           </span>
         </a>
 
-        <nav className="ml-auto hidden items-center gap-0.5 lg:flex" aria-label="Lessons">
+        <nav className="ml-auto hidden items-center gap-0.5 xl:flex" aria-label="Lessons">
           {NAV_LINKS.map((l) => (
             <a
               key={l.id}
               href={l.href}
-              className="text-muted-foreground hover:text-foreground hover:bg-muted rounded-md px-2.5 py-1.5 text-[13px] font-medium transition-colors"
+              className="text-muted-foreground hover:text-foreground hover:bg-muted whitespace-nowrap rounded-md px-2.5 py-1.5 text-[13px] font-medium transition-colors"
             >
               {l.title}
             </a>
           ))}
         </nav>
 
-        <div className="ml-auto flex items-center gap-2 lg:ml-2">
-          <div className="hidden w-36 items-center gap-2 sm:flex" title="Learning progress">
+        <div className="ml-auto flex min-w-0 items-center gap-2 xl:ml-2">
+          <div className="hidden w-32 items-center gap-2 sm:flex xl:w-36" title="Learning progress">
             <Progress value={pct} className="h-1.5" aria-label={`Learning progress ${pct}%`} />
             <span className="tnum text-xs text-muted-foreground">{pct}%</span>
           </div>
           <ThemeToggle />
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Open lessons menu">
+              <Button variant="ghost" size="icon" className="xl:hidden" aria-label="Open lessons menu">
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>

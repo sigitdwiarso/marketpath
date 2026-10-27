@@ -20,7 +20,7 @@ export function GlossaryFaq() {
 
   return (
     <section id="glossary" className="scroll-mt-20 py-14 sm:py-20" aria-labelledby="glossary-heading">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="mx-auto max-w-6xl 2xl:max-w-7xl px-4 sm:px-6">
         <div className="grid gap-10 lg:grid-cols-2">
           {/* Glossary */}
           <div>

@@ -140,17 +140,17 @@ function TradingDesk() {
 
       {/* Portfolio summary */}
       <div className="mt-4 grid gap-3 sm:grid-cols-3">
-        <div className="bg-muted/50 rounded-lg p-4">
+        <div className="bg-muted/50 rounded-lg p-3.5 sm:p-4">
           <p className="text-muted-foreground text-xs">Total portfolio value</p>
-          <p className="tnum mt-1 text-2xl font-bold">{fmtUsd(total)}</p>
+          <p className="tnum mt-1 text-xl font-bold sm:text-2xl">{fmtUsd(total)}</p>
         </div>
-        <div className="bg-muted/50 rounded-lg p-4">
+        <div className="bg-muted/50 rounded-lg p-3.5 sm:p-4">
           <p className="text-muted-foreground text-xs">Cash available</p>
-          <p className="tnum mt-1 text-2xl font-bold">{fmtUsd(cash)}</p>
+          <p className="tnum mt-1 text-xl font-bold sm:text-2xl">{fmtUsd(cash)}</p>
         </div>
-        <div className="bg-muted/50 rounded-lg p-4">
+        <div className="bg-muted/50 rounded-lg p-3.5 sm:p-4">
           <p className="text-muted-foreground text-xs">Hypothetical P/L</p>
-          <p className={cn("tnum mt-1 text-2xl font-bold", pnl >= 0 ? "text-bull" : "text-bear")}>
+          <p className={cn("tnum mt-1 text-xl font-bold sm:text-2xl", pnl >= 0 ? "text-bull" : "text-bear")}>
             {pnl >= 0 ? "+" : ""}
             {fmtUsd(pnl)} ({pnlPct >= 0 ? "+" : ""}
             {pnlPct.toFixed(2)}%)
@@ -203,7 +203,7 @@ function TradingDesk() {
       <p className="text-muted-foreground mt-5 mb-2 text-xs font-medium">
         Step 2 — buy and sell with your fictional ${START_CASH.toLocaleString()}:
       </p>
-      <div className="grid gap-3 md:grid-cols-2">
+      <div className="grid gap-3 sm:grid-cols-2">
         {DESK_ASSETS.map((a) => {
           const held = qty[a.key] ?? 0;
           const value = held * prices[a.key];
@@ -228,20 +228,20 @@ function TradingDesk() {
                   min={0}
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
-                  className="tnum h-9 flex-1"
+                  className="tnum h-9 min-w-0 flex-1"
                   aria-label={`Amount in dollars to trade ${a.ticker}`}
                 />
-                <Button size="sm" className="h-9 bg-bull text-white hover:bg-bull/85" onClick={() => trade(a, "BUY")}>
+                <Button size="sm" className="h-9 shrink-0 bg-bull px-2.5 text-white hover:bg-bull/85 sm:px-3" onClick={() => trade(a, "BUY")}>
                   Buy
                 </Button>
                 <Button
                   size="sm"
                   variant="outline"
-                  className="h-9 border-bear/50 text-bear hover:bg-bear/10"
+                  className="h-9 shrink-0 border-bear/50 px-2.5 text-bear hover:bg-bear/10 sm:px-3"
                   onClick={() => trade(a, "SELL")}
                   disabled={held <= 0}
                 >
-                  Sell all
+                  Sell
                 </Button>
               </div>
             </div>
@@ -314,8 +314,8 @@ function AllocationLab() {
 
       <div className="mt-4 space-y-3.5">
         {BUCKETS.map((b, i) => (
-          <div key={b.key} className="flex items-center gap-3">
-            <span className="w-36 shrink-0 text-xs font-medium sm:w-44">{b.label}</span>
+          <div key={b.key} className="flex items-center gap-2 sm:gap-3">
+            <span className="w-24 shrink-0 text-xs font-medium sm:w-44 sm:text-sm">{b.label}</span>
             <Slider
               value={[weights[i]]}
               min={0}
@@ -345,20 +345,20 @@ function AllocationLab() {
       </div>
 
       <div className="mt-5 grid gap-3 sm:grid-cols-3">
-        <div className="bg-muted/50 rounded-lg p-4">
+        <div className="bg-muted/50 rounded-lg p-3.5 sm:p-4">
           <p className="text-muted-foreground text-xs">Portfolio value after scenario</p>
-          <p className="tnum mt-1 text-2xl font-bold">{fmtUsd(outcome)}</p>
+          <p className="tnum mt-1 text-xl font-bold sm:text-2xl">{fmtUsd(outcome)}</p>
         </div>
-        <div className="bg-muted/50 rounded-lg p-4">
+        <div className="bg-muted/50 rounded-lg p-3.5 sm:p-4">
           <p className="text-muted-foreground text-xs">Hypothetical return</p>
-          <p className={cn("tnum mt-1 text-2xl font-bold", ret >= 0 ? "text-bull" : "text-bear")}>
+          <p className={cn("tnum mt-1 text-xl font-bold sm:text-2xl", ret >= 0 ? "text-bull" : "text-bear")}>
             {ret >= 0 ? "+" : ""}
             {ret.toFixed(1)}%
           </p>
         </div>
-        <div className="bg-muted/50 rounded-lg p-4">
+        <div className="bg-muted/50 rounded-lg p-3.5 sm:p-4">
           <p className="text-muted-foreground text-xs">Concentration (largest bucket)</p>
-          <p className={cn("tnum mt-1 text-2xl font-bold", concentration >= 60 ? "text-bear" : concentration >= 40 ? "text-gold" : "text-bull")}>
+          <p className={cn("tnum mt-1 text-xl font-bold sm:text-2xl", concentration >= 60 ? "text-bear" : concentration >= 40 ? "text-gold" : "text-bull")}>
             {concentration.toFixed(0)}%
           </p>
           <p className="text-muted-foreground mt-1 text-[11px]">

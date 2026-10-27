@@ -229,7 +229,7 @@ function CandleChart({
       {/* tooltip */}
       {hoverIdx !== null && candles[hoverIdx] && (
         <div
-          className="bg-popover pointer-events-none absolute top-2 z-10 w-44 rounded-lg border border-border p-3 text-xs shadow-xl"
+          className="bg-popover pointer-events-none absolute top-2 z-10 w-36 rounded-lg border border-border p-3 text-xs shadow-xl sm:w-44"
           style={{
             left: `${(hoverIdx + 0.5) < n * 0.55 ? (xOf(hoverIdx) / CHART_W) * 100 + 3 : (xOf(hoverIdx) / CHART_W) * 100 - 32}%`,
           }}
@@ -292,7 +292,7 @@ export function ChartReading() {
         </>
       }
     >
-      <div className="grid gap-6 lg:grid-cols-[1.9fr_1fr]">
+      <div className="grid min-w-0 gap-6 lg:grid-cols-[1.9fr_1fr]">
         {/* Chart panel */}
         <div className="bg-card rounded-xl border border-border p-4 sm:p-5">
           <div className="flex flex-wrap items-center justify-between gap-3">
@@ -308,7 +308,7 @@ export function ChartReading() {
                     setHoverIdx(null);
                   }}
                   className={cn(
-                    "rounded-md px-3 py-1.5 text-sm font-medium transition-colors",
+                    "rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors sm:text-sm",
                     asset === k ? "bg-background text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"
                   )}
                 >
@@ -348,8 +348,8 @@ export function ChartReading() {
 
           {/* price header */}
           <div className="mt-4 flex flex-wrap items-baseline gap-x-4 gap-y-1 px-1">
-            <span className="font-heading text-xl font-bold">{cfg.label}</span>
-            <span className="tnum text-2xl font-bold">{money(last.close)}</span>
+            <span className="font-heading text-lg font-bold sm:text-xl">{cfg.label}</span>
+            <span className="tnum text-xl font-bold sm:text-2xl">{money(last.close)}</span>
             <span className={cn("tnum text-sm font-semibold", up ? "text-bull" : "text-bear")}>
               {up ? "▲" : "▼"} {Math.abs(changePct).toFixed(2)}% over this window
             </span>

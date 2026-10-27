@@ -131,7 +131,7 @@ export function Fundamentals() {
           People use both words loosely, but they describe genuinely different activities with
           different time horizons, skills and risks.
         </p>
-        <div className="bg-card mt-4 overflow-x-auto rounded-xl border border-border">
+        <div className="bg-card custom-scrollbar mt-4 overflow-x-auto rounded-xl border border-border">
           <table className="w-full min-w-[560px] text-sm">
             <thead>
               <tr className="border-b border-border text-left">

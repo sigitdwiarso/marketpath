@@ -112,10 +112,10 @@ export function Hero() {
   return (
     <div id="top" className="bg-market-grid relative overflow-hidden">
       <div className="pointer-events-none absolute -top-40 left-1/2 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-volt/10 blur-3xl" aria-hidden />
-      <div className="relative mx-auto max-w-6xl px-4 pt-16 pb-14 sm:px-6 sm:pt-24 sm:pb-20">
+      <div className="relative mx-auto max-w-6xl 2xl:max-w-7xl px-4 pt-16 pb-14 sm:px-6 sm:pt-24 sm:pb-20">
         <div className="grid items-center gap-10 lg:grid-cols-2">
           <div>
-            <Badge variant="outline" className="mb-5 border-gold/50 text-gold">
+            <Badge variant="outline" className="mb-5 whitespace-normal border-gold/50 text-gold">
               Zero experience required · 100% practice, 0% real money
             </Badge>
             <h1 className="font-heading text-4xl leading-[1.08] font-extrabold tracking-tight sm:text-5xl lg:text-[3.4rem]">
@@ -127,13 +127,13 @@ export function Hero() {
               starting from zero. Interactive lessons, plain-language explanations and a risk-free
               simulator with fictional capital.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button asChild size="lg" className="bg-volt text-white hover:bg-volt/85">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Button asChild size="lg" className="bg-volt text-white hover:bg-volt/85 sm:flex-1 lg:flex-none">
                 <a href="#fundamentals">
                   Start Learning <ArrowRight className="ml-1 h-4 w-4" aria-hidden />
                 </a>
               </Button>
-              <Button asChild size="lg" variant="outline">
+              <Button asChild size="lg" variant="outline" className="sm:flex-1 lg:flex-none">
                 <a href="#fundamentals">
                   <BookOpen className="mr-1.5 h-4 w-4" aria-hidden /> Explore Market Basics
                 </a>
@@ -149,7 +149,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="bg-card/80 rounded-2xl border border-border p-4 shadow-xl backdrop-blur sm:p-5"
+            className="bg-card/80 rounded-2xl border border-border p-3 shadow-xl backdrop-blur sm:p-5"
           >
             <div className="mb-2 flex items-center justify-between px-1">
               <div>

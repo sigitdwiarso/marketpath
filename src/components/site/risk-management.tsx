@@ -25,19 +25,22 @@ function DrawdownVisual() {
         professionals obsess over avoiding deep drawdowns rather than chasing big wins.
       </p>
       <div className="mt-4 space-y-3">
-        {rows.map((r) => (
-          <div key={r.drop} className="flex items-center gap-3">
-            <span className="tnum w-14 text-right text-sm font-semibold text-bear">{r.drop}%</span>
-            <div className="h-7 flex-1 overflow-hidden rounded-md bg-muted">
-              <div
-                className={cn("flex h-full items-center justify-end rounded-md pr-2 text-white", r.drop <= -50 ? "bg-bear" : r.drop <= -25 ? "bg-gold" : "bg-bull")}
-                style={{ width: `${Math.min(100, r.need / 4.2)}%` }}
-              >
-                <span className="tnum text-xs font-bold">+{r.need}% needed to break even</span>
+        {rows.map((r) => {
+          const barColor = r.drop <= -50 ? "bg-bear" : r.drop <= -25 ? "bg-gold" : "bg-bull";
+          return (
+            <div key={r.drop} className="flex items-center gap-2 sm:gap-3">
+              <span className="tnum w-11 shrink-0 text-right text-sm font-semibold text-bear sm:w-14">{r.drop}%</span>
+              <div className="flex h-7 min-w-0 flex-1 items-center gap-2">
+                <div className="h-7 shrink-0 overflow-hidden rounded-md" style={{ width: `${Math.min(55, r.need / 7.3)}%` }}>
+                  <div className={cn("h-full rounded-md", barColor)} />
+                </div>
+                <span className="tnum text-[10px] font-medium whitespace-nowrap sm:text-xs">
+                  +{r.need}% to break even
+                </span>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
       <p className="text-muted-foreground mt-3 text-xs">
         Bars scaled to the required gain. Survivability beats optimization.
@@ -81,20 +84,20 @@ function PositionSizer() {
           <Slider className="mt-3" value={stopPct} min={2} max={30} step={1} onValueChange={setStopPct} aria-label="Stop loss distance percent" />
         </div>
       </div>
-      <div className="bg-muted/50 mt-4 grid gap-3 rounded-lg p-4 sm:grid-cols-3">
+      <div className="bg-muted/50 mt-4 grid gap-3 rounded-lg p-3.5 sm:grid-cols-3 sm:p-4">
         <div>
           <p className="text-muted-foreground text-xs">Maximum loss if stopped out</p>
-          <p className="tnum mt-1 text-xl font-bold text-bear">
+          <p className="tnum mt-1 text-lg font-bold text-bear sm:text-xl">
             −${riskUsd.toLocaleString("en-US", { maximumFractionDigits: 0 })}
           </p>
         </div>
         <div>
           <p className="text-muted-foreground text-xs">Position size to buy</p>
-          <p className="tnum mt-1 text-xl font-bold">${position.toLocaleString("en-US", { maximumFractionDigits: 0 })}</p>
+          <p className="tnum mt-1 text-lg font-bold sm:text-xl">${position.toLocaleString("en-US", { maximumFractionDigits: 0 })}</p>
         </div>
         <div>
           <p className="text-muted-foreground text-xs">That&apos;s this share of your account</p>
-          <p className="tnum mt-1 text-xl font-bold">{posPctOfAcc.toFixed(0)}%</p>
+          <p className="tnum mt-1 text-lg font-bold sm:text-xl">{posPctOfAcc.toFixed(0)}%</p>
         </div>
       </div>
       <p className="text-muted-foreground mt-3 text-xs leading-relaxed">
@@ -121,17 +124,17 @@ function LeverageVisual() {
         so do losses. Drag the slider to see how small a move it takes to lose everything:
       </p>
       <div className="mt-4 flex items-center gap-3">
-        <span className="w-28 shrink-0 text-xs font-medium">Leverage: {lev[0]}×</span>
+        <span className="w-24 shrink-0 text-xs font-medium sm:w-28">Leverage: {lev[0]}×</span>
         <Slider value={lev} min={1} max={25} step={1} onValueChange={setLev} className="flex-1" aria-label="Leverage multiplier" />
       </div>
       <div className="mt-4 grid gap-3 sm:grid-cols-2">
         <div className={cn("rounded-lg border p-4", lev[0] > 5 ? "border-bear/50 bg-bear/10" : "border-border bg-muted/50")}>
           <p className="text-muted-foreground text-xs">Price move against you that wipes out 100% of your stake</p>
-          <p className={cn("tnum mt-1 text-3xl font-bold", lev[0] > 5 ? "text-bear" : "text-gold")}>−{wipeout.toFixed(1)}%</p>
+          <p className={cn("tnum mt-1 text-2xl font-bold sm:text-3xl", lev[0] > 5 ? "text-bear" : "text-gold")}>−{wipeout.toFixed(1)}%</p>
         </div>
         <div className="bg-muted/50 rounded-lg border border-border p-4">
           <p className="text-muted-foreground text-xs">Your effective exposure</p>
-          <p className="tnum mt-1 text-3xl font-bold">{lev[0]}× your money</p>
+          <p className="tnum mt-1 text-2xl font-bold sm:text-3xl">{lev[0]}× your money</p>
           <p className="text-muted-foreground mt-1 text-[11px]">
             On a $1,000 stake at {lev[0]}× leverage, you control ${((1000 * lev[0])).toLocaleString()} of the asset.
           </p>
